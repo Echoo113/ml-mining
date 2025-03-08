@@ -32,7 +32,7 @@ $$
 \sigma(z) = \frac{1}{1 + e^{-z}}
 $$
 
-where \( z = Xw \) and \( w \) is the weight vector.
+where $ z = Xw $ and $ w $ is the weight vector.
 
 ### 🛠 **Key Components in My Implementation**
 - **Initialization:** I set up the weight vector and stored the training data.
@@ -50,7 +50,7 @@ where \( z = Xw \) and \( w \) is the weight vector.
   w_{i+1} = w_i - \alpha \nabla_w L(w_i)
   $$
 
-  where \( \alpha \) is the learning rate.
+  where $ \alpha $ is the learning rate.
 - **Prediction:** I classified new samples based on the output probability:
 
   $$
@@ -73,12 +73,12 @@ P(y|X) = \frac{P(X|y) \, P(y)}{P(X)}
 $$
 
 where:
-- \( P(y) \) is the prior probability.
-- \( P(X|y) \) is the likelihood.
-- \( P(X) \) is the evidence.
+- $ P(y) $ is the prior probability.
+- $ P(X|y) $ is the likelihood.
+- $ P(X) $ is the evidence.
 
 ### 🛠 **Key Components in My Implementation**
-- **Initialization:** I set up model parameters including a Laplace smoothing factor \( \alpha \).
+- **Initialization:** I set up model parameters including a Laplace smoothing factor $ \alpha $.
 - **Prior Probability:** I computed the prior probability for each class:
 
   $$
@@ -91,7 +91,7 @@ where:
   P(x_j|y=c) = \frac{\text{Count}(x_j \text{ in class } c) + \alpha}{\text{Total count for } y=c + \alpha d}
   $$
 
-  where \( d \) is the number of distinct feature values.
+  where $ d $ is the number of distinct feature values.
 - **Model Fitting:** I stored the training data and calculated both prior and feature probabilities.
 - **Prediction:** I determined the class label for each sample by selecting the one with the highest posterior probability.
 - **Evaluation:** I measured performance using metrics such as Zero-One Loss and Squared Loss:
