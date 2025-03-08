@@ -1,91 +1,116 @@
-# 🧠 KNN & Decision Tree Classifier Implementation
+# 🚀 **Logistic Regression & Naive Bayes Classifier - HW2** 🎯
 
-Welcome to my implementation of **K-Nearest Neighbors (KNN) and Decision Tree classifiers**! 🚀
-This repository contains the solutions for HW1, where I implemented these fundamental machine learning algorithms from scratch using Python. 🐍💡
-
-## 📂 Project Structure
-Here's what you'll find in this repository:
-
-```
-📦 hw1
- ┣ 📜 knn.py        # KNN classifier implementation 🏃‍♂️
- ┣ 📜 scorer.py     # Scoring functions for decision trees 🎯
- ┣ 📜 dt.py         # Decision tree classifier implementation 🌳
- ┣ 📜 utils.py      # Helper functions (no modifications needed) 🔧
- ┗ 📜 README.md     # You are here! 📖
-```
-
-## 📖 Overview
-This assignment focuses on implementing:
-✅ **K-Nearest Neighbors (KNN)** using Minkowski distance (p=3) 📏
-✅ **Decision Tree Classifier** with various splitting criteria 🌳
-✅ **Scoring Functions** (Entropy, Gini, and Chi-square gain) 📊
-
-## 🚀 Implementation Details
-### 🔹 KNN Classifier
-- Implements a **non-parametric classifier** that predicts based on neighbors.
-- Uses **Minkowski distance** (p=3) as the metric.
-- Efficiently retrieves **top-K nearest neighbors** using `np.argsort`.
-- Predicts labels using **majority voting** (`np.bincount` & `np.argmax`).
-
-#### 📏 Minkowski Distance Formula
-The Minkowski distance of order \( p \) between two points \( x \) and \( y \) in an \( n \)-dimensional space is given by:
-$$
-D(x, y) = \left( \sum_{i=1}^{n} |x_i - y_i|^p \right)^{\frac{1}{p}}
-$$
-For this assignment, we use \( p = 3 \).
-
-### 🔹 Scorer Functions
-- **Entropy (Information Score)**: Measures uncertainty in class labels.
-
-  $$
-  H(S) = - \sum_{i=1}^{c} p_i \log_2 p_i
-  $$
-  where \( p_i \) is the probability of class \( i \).
-
-- **Gini Score**: Measures impurity in a dataset.
-  $$
-  G(S) = 1 - \sum_{i=1}^{c} p_i^2
-  $$
-
-- **Chi-square Gain**: Uses contingency tables to evaluate feature splits.
-  $$
-  \chi^2 = \sum \frac{(O - E)^2}{E}
-  $$
-  where \( O \) is the observed frequency and \( E \) is the expected frequency.
-
-- Implements **subset selection, information gain, and Gini gain calculations**.
-
-### 🔹 Decision Tree Classifier
-- Uses **recursive partitioning** to build a tree from training data.
-- Splits nodes based on **maximum information gain**.
-- Supports **class probability predictions** at leaf nodes.
-- Implements **pruning using max depth** to prevent overfitting.
-
-## 📦 Dependencies
-Before running the code, install the required libraries:
-```bash
-pip install numpy pandas scipy
-```
-
-## 🎯 Usage
-Run the classifiers using the provided datasets:
-```python
-# KNN Example 🏃‍♂️
-k = KNearestNeighbor(k=5)
-k.fit(X_train, y_train)
-predictions = k.predict(X_test)
-```
-
-```python
-# Decision Tree Example 🌳
-dt = DecisionTree(max_depth=5)
-dt.fit(X_train, y_train)
-predictions = dt.predict(X_test)
-```
-
-## 🏆 Why This Matters
-These classifiers are foundational in machine learning and serve as building blocks for more complex models! Understanding their implementation helps in **optimizing real-world decision-making**. 🧠💡
+Hi, I'm Echo. In this project, I implemented two core machine learning algorithms as part of my coursework: a **Logistic Regression classifier** and a **Naive Bayes classifier**. This assignment allowed me to apply both probabilistic modeling and optimization techniques, showcasing my ability to blend theory with practical coding.
 
 ---
-Made with ❤️ by **[Your Name]** | 🚀 Happy Coding!
+
+## 📌 **Overview**
+This repository contains my implementations for:
+- **Logistic Regression** – A method for binary classification using a sigmoid function to map predictions to probabilities.
+- **Naive Bayes Classifier** – A probabilistic classifier based on Bayes’ theorem that uses feature likelihoods and class priors.
+
+I developed these models from scratch, demonstrating my strong grasp of both the underlying mathematics and their practical applications.
+
+---
+
+## 📂 **Files & Implementation**
+
+### 🔧 **Files to Submit**
+- `lr.py` – Contains my implementation of the **Logistic Regression classifier**.
+- `nbc.py` – Contains my implementation of the **Naive Bayes classifier**.
+
+### 📁 **Provided Resources**
+- `utils.py` – Includes helper functions for data loading and preprocessing.
+- `train.pkl` – The training dataset for model development.
+
+---
+
+## 📊 **Logistic Regression Implementation**
+Logistic Regression is used for binary classification by predicting probabilities using the **sigmoid function**:
+
+$$
+\sigma(z) = \frac{1}{1 + e^{-z}}
+$$
+
+where \( z = Xw \) and \( w \) is the weight vector.
+
+### 🛠 **Key Components in My Implementation**
+- **Initialization:** I set up the weight vector and stored the training data.
+- **Sigmoid Function:** I implemented the function to compute probabilities using the formula above.
+- **Weight Initialization:** I started with an initial weight vector (e.g., all ones) before training.
+- **Gradient Computation:** I derived the gradient of the loss function:
+
+  $$
+  \nabla_w L(w) = \frac{1}{m} X^T \left(\sigma(Xw) - y\right)
+  $$
+
+- **Gradient Descent:** I used an iterative update rule to optimize the weights:
+
+  $$
+  w_{i+1} = w_i - \alpha \nabla_w L(w_i)
+  $$
+
+  where \( \alpha \) is the learning rate.
+- **Prediction:** I classified new samples based on the output probability:
+
+  $$
+  \hat{y} =
+  \begin{cases} 
+  1, & \text{if } \sigma(Xw) \geq 0.5 \\
+  0, & \text{otherwise}
+  \end{cases}
+  $$
+
+- **Accuracy Measurement:** I computed accuracy by comparing predicted labels with true labels.
+
+---
+
+## 📊 **Naive Bayes Classifier Implementation**
+Naive Bayes uses Bayes' Theorem to compute the posterior probability for each class:
+
+$$
+P(y|X) = \frac{P(X|y) \, P(y)}{P(X)}
+$$
+
+where:
+- \( P(y) \) is the prior probability.
+- \( P(X|y) \) is the likelihood.
+- \( P(X) \) is the evidence.
+
+### 🛠 **Key Components in My Implementation**
+- **Initialization:** I set up model parameters including a Laplace smoothing factor \( \alpha \).
+- **Prior Probability:** I computed the prior probability for each class:
+
+  $$
+  P(y=c) = \frac{\text{Count}(y=c)}{\text{Total number of samples}}
+  $$
+
+- **Likelihood Estimation:** For each feature, I computed the likelihood using Laplace smoothing:
+
+  $$
+  P(x_j|y=c) = \frac{\text{Count}(x_j \text{ in class } c) + \alpha}{\text{Total count for } y=c + \alpha d}
+  $$
+
+  where \( d \) is the number of distinct feature values.
+- **Model Fitting:** I stored the training data and calculated both prior and feature probabilities.
+- **Prediction:** I determined the class label for each sample by selecting the one with the highest posterior probability.
+- **Evaluation:** I measured performance using metrics such as Zero-One Loss and Squared Loss:
+
+  $$
+  \text{Zero-One Loss} = \frac{\text{Incorrect predictions}}{\text{Total predictions}}
+  $$
+
+  $$
+  \text{Squared Loss} = \frac{1}{m} \sum_{i=1}^{m} \left(1 - p_i\right)^2
+  $$
+
+---
+
+## 📦 **Required Packages**
+The project relies on the following packages:
+- ✅ `numpy` – For numerical computations.
+- ✅ `tqdm` – (Optional) For displaying progress bars during training.
+
+To install these packages, run:
+```bash
+pip install numpy tqdm
