@@ -23,33 +23,34 @@ Welcome to the Neural Network Playground! In this project, you will implement an
 
 ### 🟩 ReLU Activation (1.2)
 
-```math
+$$
 \text{ReLU}(x) = 
 \begin{cases}
 0 & \text{if } x < 0 \\
 x & \text{otherwise}
 \end{cases}
-```
+$$
 
 ### 🟩 ReLU Derivative (1.3)
 
-```math
+$$
 \frac{d}{dx} \text{ReLU}(x) = 
 \begin{cases}
 0 & \text{if } x \leq 0 \\
 1 & \text{otherwise}
 \end{cases}
-```
+$$
 
 ---
 
 ### 🧮 Cross Entropy Loss (1.4)
 
-Given predicted probabilities (`y_{pred}`) and one-hot true labels (`y_{true}`):
+Given predicted probabilities ($y_{\text{pred}}$) and one-hot true labels ($y_{\text{true}}$):
 
-```math
+
+$$
 \text{Loss}(y_{\text{true}}, y_{\text{pred}}) = -\frac{1}{n} \sum_{i=1}^{n} y_{\text{true}, i} \log(y_{\text{pred}, i})
-```
+$$
 
 ---
 
@@ -57,12 +58,12 @@ Given predicted probabilities (`y_{pred}`) and one-hot true labels (`y_{true}`):
 
 For one hidden layer:
 
-```math
+$$
 z_1 = X W_1 + b_1 \\
 a_1 = \text{ReLU}(z_1) \\
 z_2 = a_1 W_2 + b_2 \\
 a_2 = \text{Softmax}(z_2)
-```
+$$
 
 ---
 
@@ -70,45 +71,32 @@ a_2 = \text{Softmax}(z_2)
 
 #### Output Layer:
 
-```math
-\frac{\partial L}{\partial z_2} = a_2 - y_{\text{true}}
-```
-
-```math
-\frac{\partial L}{\partial W_2} = a_1^\top \frac{\partial L}{\partial z_2}
-```
-
-```math
+$$
+\frac{\partial L}{\partial z_2} = a_2 - y_{\text{true}} \\
+\frac{\partial L}{\partial W_2} = a_1^\top \frac{\partial L}{\partial z_2} \\
 \frac{\partial L}{\partial b_2} = \sum \frac{\partial L}{\partial z_2}
-```
+$$
 
 #### Hidden Layer:
 
-```math
-\frac{\partial L}{\partial z_1} = \left( \frac{\partial L}{\partial z_2} W_2^\top \right) \odot \text{ReLU}'(z_1)
-```
-
-```math
-\frac{\partial L}{\partial W_1} = X^\top \frac{\partial L}{\partial z_1}
-```
-
-```math
+$$
+\frac{\partial L}{\partial z_1} = \left( \frac{\partial L}{\partial z_2} W_2^\top \right) \odot \text{ReLU}'(z_1) \\
+\frac{\partial L}{\partial W_1} = X^\top \frac{\partial L}{\partial z_1} \\
 \frac{\partial L}{\partial b_1} = \sum \frac{\partial L}{\partial z_1}
-```
+$$
 
 ---
 
 ### 🧮 Gradient Descent Update Rule
 
-```math
+For any parameter $\theta$:
+
+$$
 \theta = \theta - \alpha \frac{\partial L}{\partial \theta}
-```
+$$
 
-Where:
+Where $\alpha$ is the learning rate.
 
-```math
-\alpha \text{ is the learning rate}
-```
 
 ---
 
