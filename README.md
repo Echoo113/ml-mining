@@ -1,5 +1,5 @@
 # Data-Mine & Machine-Learning
-# **University Course Projects - Machine Learning Track**
+# **University Coursework - Machine Learning Track**
 
 Welcome to my GitHub repository! 🎓 This folder contains projects from my university coursework in the **Machine Learning (ML) track** at Purdue University. These projects showcase my academic work, coding implementations, and research in ML-related fields.
 
