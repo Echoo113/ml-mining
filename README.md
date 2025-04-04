@@ -13,10 +13,5 @@ This repository includes various projects related to:
 ## **Usage Policy**
 🚨 **View Only**: This repository is shared for educational and reference purposes. Feel free to explore the code and concepts, but **please do not copy, redistribute, or use this work for academic submissions**. Copying or reusing code violates academic integrity policies.
 
-## **Connect With Me**
-I'm always open to discussing ML, research ideas, and collaborations. Feel free to reach out!
 
 
-💼 **LinkedIn**: [Yanan He](https://www.linkedin.com/in/yanan-he-23348a2b1/)
-
-Happy learning and coding! 🚀
